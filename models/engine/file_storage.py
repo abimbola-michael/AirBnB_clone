@@ -28,13 +28,21 @@ class FileStorage:
         for key, value in FileStorage.__objects.items():
             obj_dict[key] = value.to_dict()
 
-        with open(__file_path, "w") as fl:
+        with open(FileStorage.__file_path, "w") as fl:
             json.dump(obj_dict, fl)
 
     def reload(self):
         """deserializes the JSON file to __objects (only if the JSON
         file (__file_path) exists ; otherwise, do nothing."""
 
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+        
         try:
             with open(FileStorage.__file_path, "r") as fl:
                 obj_dict = json.load(fl)
