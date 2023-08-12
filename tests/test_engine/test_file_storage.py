@@ -127,3 +127,7 @@ class Testing_all(unittest.TestCase):
     def testing_all_arg(self):
         with self.assertRaises(TypeError):
             FileStorage().all({})
+
+
+if __name__ == "__main__":
+    unittest.main()
