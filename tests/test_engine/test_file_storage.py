@@ -18,5 +18,3 @@ from models.base_model import BaseModel
 
 class Testing_init_filestorage(unittest.TestCase):
     """ this tests the initializing class with the methods """
-
-
