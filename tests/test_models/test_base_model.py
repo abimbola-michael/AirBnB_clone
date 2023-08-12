@@ -80,7 +80,7 @@ class Testing_init(unittest.TestCase):
 class Testing_kwargs(unittest.TestCase):
     """ This tests the inti method putting the kwargs in view """
 
-    def testing_Bmodel_create(self):
+    def testing_basemodel_create(self):
         """testing and comparing basemodel create """
 
         new_base = BaseModel()
@@ -88,12 +88,10 @@ class Testing_kwargs(unittest.TestCase):
         test_base = BaseModel(**new_dict)
         self.assertEqual(str(new_base), str(test_base))
         fin_str = "[" + new_base.__class__.__name__ + \
-            "] (" + new_base.id + ")" + str(new_base.__dict__)
-        fin_str = "[" + new_base.__class__.__name__ + "] (" + new_base.id
-        + ")" + str(new_base.__dict__)
+            "] (" + new_base.id + ") " + str(new_base.__dict__)
         self.assertEqual(fin_str, str(new_base))
 
-    def testing_basemodel_create(self):
+    def testing_basemodel_created(self):
         """ testing basemodel create """
 
         new_base = BaseModel()
