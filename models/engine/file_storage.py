@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# a class FileStorage that serializes instances
+
 import json
 
 
