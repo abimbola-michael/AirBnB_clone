@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# a class BaseModel that defines all common attributes/methods
+""" a class BaseModel that defines all common attributes/methods """
 
 import uuid
 from datetime import datetime
@@ -48,4 +48,5 @@ class BaseModel:
         dict_copy["__class__"] = self.__class__.__name__
         dict_copy["created_at"] = self.created_at.isoformat()
         dict_copy["updated_at"] = self.updated_at.isoformat()
+        
         return dict_copy
