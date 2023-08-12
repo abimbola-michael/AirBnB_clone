@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# a class BaseModel that defines all common attributes/methods
+
 import uuid
 from datetime import datetime
 from models import storage

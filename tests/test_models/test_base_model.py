@@ -69,8 +69,13 @@ class Testing_kwargs(unittest.TestCase):
         new_dict = new_base.to_dict()
         test_base = BaseModel(**new_dict)
         self.assertEqual(str(new_base), str(test_base))
+<<<<<<< HEAD
         fin_str = "[" + new_base.__class__.__name__ + \
             "] (" + new_base.id + ")" + str(new_base.__dict__)
+=======
+        fin_str = "[" + new_base.__class__.__name__ + "] (" + new_base.id
+        + ")" + str(new_base.__dict__)
+>>>>>>> 75c8da719079a53507a8143a42b4660de5fd3c93
         self.assertEqual(fin_str, str(new_base))
 
     def testing_basemodel_create(self):
@@ -116,8 +121,13 @@ class Testing_str(unittest.TestCase):
         new_base = BaseModel()
         new_class = new_base.__class__
         new_id = new_base.id
+<<<<<<< HEAD
         fin_str = "[" + new_base.__class__.__name__ + \
             "] (" + new_base.id + ") " + str(new_base.__dict__)
+=======
+        fin_str = "[" + new_base.__class__.__name__ + "] ("
+        + new_base.id + ") " + str(new_base.__dict__)
+>>>>>>> 75c8da719079a53507a8143a42b4660de5fd3c93
         self.assertEqual(new_base.__str__(), fin_str)
 
 
@@ -175,7 +185,14 @@ class Testing_dict(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             BaseModel().to_dict(
+<<<<<<< HEAD
                 "first arg", ["a list"], ("a tuple", "with another element"))
+=======
+                    "first arg", ["a list"], (
+                        "a tuple", "with another element"
+                        )
+                    )
+>>>>>>> 75c8da719079a53507a8143a42b4660de5fd3c93
 
     def testing_without_arg(self):
         self.assertIsInstance(BaseModel().to_dict(), dict)
