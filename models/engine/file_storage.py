@@ -44,7 +44,7 @@ class FileStorage:
         from models.amenity import Amenity
         from models.place import Place
         from models.review import Review
-        
+
         try:
             with open(type(self).__file_path, "r") as fl:
                 file_text = fl.read()
