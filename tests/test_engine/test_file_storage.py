@@ -19,7 +19,6 @@ from models.base_model import BaseModel
 
 class Testing_init_filestorage(unittest.TestCase):
     """ this tests the initializing class with the methods """
-<<<<<<< HEAD
 
     def testing_file_storage(self):
         self.assertIsInstance(FileStorage(), FileStorage)
@@ -128,5 +127,3 @@ class Testing_all(unittest.TestCase):
     def testing_all_arg(self):
         with self.assertRaises(TypeError):
             FileStorage().all({})
-=======
->>>>>>> 75c8da719079a53507a8143a42b4660de5fd3c93
