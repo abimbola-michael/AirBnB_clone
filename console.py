@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# a program called console.py
+""" a program called console.py """
+
 import cmd
 from models.base_model import BaseModel
 from models.user import User
@@ -16,20 +17,6 @@ class HBNBCommand(cmd.Cmd):
     of the command interpreter"""
 
     prompt = "(hbnb) "
-
-    def do_quit(self, arg):
-        """Command to quit the program"""
-
-        return True
-
-    def do_EOF(self, arg):
-        """Ctr D to exit the program"""
-        print('\n')
-        return True
-
-    def emptyline(self):
-        """an empty line + ENTER shouldn’t execute anything"""
-        pass
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it (to the
@@ -162,6 +149,20 @@ class HBNBCommand(cmd.Cmd):
                             if len(new_value) == 3 and new_value[2] != "":
                                 obj.__dict__[args[2]] = new_value[1]
                                 obj.save()
+
+    def do_quit(self, arg):
+        """Command to quit the program"""
+
+        return True
+
+    def do_EOF(self, arg):
+        """Ctr D to exit the program"""
+        print('\n')
+        return True
+
+    def emptyline(self):
+        """an empty line + ENTER shouldn’t execute anything"""
+        pass
 
 
 if __name__ == "__main__":
