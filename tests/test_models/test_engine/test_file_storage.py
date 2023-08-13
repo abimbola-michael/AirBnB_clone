@@ -42,7 +42,7 @@ class Testing_init_filestorage(unittest.TestCase):
         """ tests file storage path """
 
         with self.assertRaises(AttributeError):
-            FileStorage().file_path
+            FileStorage().__file_path
 
     def testing_private_file_storage_path(self):
         """ testing private file storage path """
@@ -54,7 +54,7 @@ class Testing_init_filestorage(unittest.TestCase):
         """ testing object storage """
 
         with self.assertRaises(AttributeError):
-            FileStorage().objects
+            FileStorage().__objects
 
     def testing_private_file_storage_objects(self):
         """ testing private storage object """
