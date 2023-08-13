@@ -93,7 +93,7 @@ class Testing_save(unittest.TestCase):
         new_user = User()
         new_user.save()
         new_user_id = 'User.' + new_user.id
-        with open('objects.json', 'r') as document:
+        with open('file.json', 'r') as document:
             self.assertIn(new_user_id, document.read())
 
     def testing_with_arg(self):

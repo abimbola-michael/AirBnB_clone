@@ -142,7 +142,7 @@ class Testing_save(unittest.TestCase):
         new_place = Place()
         new_place.save()
         new_place_id = 'Place.' + new_place.id
-        with open('objects.json', 'r') as document:
+        with open('file.json', 'r') as document:
             self.assertIn(new_place_id, document.read())
 
     def testing_with_arg(self):

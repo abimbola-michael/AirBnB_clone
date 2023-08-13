@@ -121,7 +121,7 @@ class Testing_save(unittest.TestCase):
         """ a static method to test erase """
 
         try:
-            os.remove('object.json')
+            os.remove('file.json')
         except IOError:
             pass
 
@@ -136,7 +136,7 @@ class Testing_save(unittest.TestCase):
 
         new_base = BaseModel()
         storage.save()
-        with open('objects.json', 'r') as document:
+        with open('file.json', 'r') as document:
             new_file = document.read()
             self.assertIn("BaseModel." + new_base.id, new_file)
 

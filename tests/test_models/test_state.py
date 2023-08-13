@@ -72,7 +72,7 @@ class Testing_save(unittest.TestCase):
         new_state = State()
         new_state.save()
         new_state_id = 'State.' + new_state.id
-        with open('objects.json', 'r') as document:
+        with open('file.json', 'r') as document:
             self.assertIn(new_state_id, document.read())
 
     def testing_with_arg(self):
