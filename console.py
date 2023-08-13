@@ -110,6 +110,8 @@ class HBNBCommand(cmd.Cmd):
                     class_name = key.split(".")[0]
                     if arg == class_name:
                         print(value)
+                    else:
+                        pass
             else:
                 print("** class doesn't exist **")
 
