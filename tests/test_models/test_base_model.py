@@ -1,14 +1,12 @@
 #!/usr/bin/python3
-# this is used to unit test all the basemodel class
-
-import unittest
-from datetime import datetime
-from models.base_model import BaseModel
-
 """ This takes the BaseModel class and tests each unit as follows:
 Testing_init, Testing_kwargs, Testing_str
 Testing_save, Testing_dict
 """
+
+import unittest
+from datetime import datetime
+from models.base_model import BaseModel
 
 
 class Testing_init(unittest.TestCase):
@@ -20,7 +18,7 @@ class Testing_init(unittest.TestCase):
         self.assertIsInstance(BaseModel(), BaseModel)
 
     def testing_uniqueness(self):
-        """ testing uniqueness """
+        """ testing uniqueness"""
 
         opt1 = BaseModel()
         opt2 = BaseModel()
@@ -231,5 +229,5 @@ class Testing_dict(unittest.TestCase):
         self.assertIsInstance(BaseModel().to_dict(), dict)
 
 
-if "__name__" == "__main__":
+if __name__ == "__main__":
     unittest.main()
