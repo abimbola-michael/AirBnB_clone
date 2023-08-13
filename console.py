@@ -16,27 +16,23 @@ class HBNBCommand(cmd.Cmd):
     """ a program called console.py that contains the entry point
     of the command interpreter"""
 
+    __class_list = [
+                "BaseModel", "User", "State", "City",
+                "Amenity", "Place", "Review"
+                ]
+
     prompt = "(hbnb) "
 
     def do_create(self, arg):
         """Creates a new instance of BaseModel, saves it (to the
         JSON file) and prints the id. Ex: $ create BaseModel"""
 
-        class_dict = {
-            "BaseModel": BaseModel,
-            "User": User,
-            "State": State,
-            "City": City,
-            "Amenity": Amenity,
-            "Place": Place,
-            "Review": Review
-        }
         if arg is None or arg == '':
             print("** class name missing **")
-        elif arg not in class_dict.keys():
+        elif arg not in HBNBCommand.__class_list:
             print("** class doesn't exist **")
         else:
-            obj = class_dict[arg]()
+            obj = eval(arg.split()[0] + "()")
             obj.save()
             print(obj.id)
 
@@ -44,16 +40,11 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance based on
         the class name and id. Ex: $ show BaseModel 1234-1234-1234."""
 
-        class_list = [
-                "BaseModel", "User", "State", "City",
-                "Amenity", "Place", "Review"
-                ]
-
         if arg is None or arg == '':
             print("** class name missing **")
         else:
             args = arg.split()
-            if args[0] not in class_list:
+            if args[0] not in HBNBCommand.__class_list:
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
@@ -70,16 +61,11 @@ class HBNBCommand(cmd.Cmd):
         change into the JSON file).
         Ex: $ destroy BaseModel 1234-1234-1234"""
 
-        class_list = [
-                "BaseModel", "User", "State", "City",
-                "Amenity", "Place", "Review"
-                ]
-
         if arg is None or arg == '':
             print("** class name missing **")
         else:
             args = arg.split()
-            if args[0] not in class_list:
+            if args[0] not in HBNBCommand.__class_list:
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
@@ -96,22 +82,18 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or
         not on the class name. Ex: $ all BaseModel or $ all."""
 
-        class_list = [
-                "BaseModel", "User", "State", "City",
-                "Amenity", "Place", "Review"
-                ]
-
+        obj_list = []
         if arg is None or arg == "":
-            for key, value in storage.all().items():
-                print(value)
+            for obj in storage.all().values():
+                obj_list.append(obj.__str__())
+            print(obj_list)
         else:
-            if arg in class_list:
-                for key, value in storage.all().items():
-                    class_name = key.split(".")[0]
-                    if arg == class_name:
-                        print(value)
-                    else:
-                        pass
+            args = arg.split()
+            if arg in HBNBCommand.__class_list:
+                for obj in storage.all().values():
+                    if args[0] == obj.__class__.__name__:
+                        obj_list.append(obj.__str__())
+                print(obj_list)
             else:
                 print("** class doesn't exist **")
 
@@ -121,16 +103,11 @@ class HBNBCommand(cmd.Cmd):
         JSON file). Ex: $ update BaseModel 1234-1234-1234 email
         "aibnb@mail.com" """
 
-        class_list = [
-                "BaseModel", "User", "State", "City",
-                "Amenity", "Place", "Review"
-                ]
-
         if arg is None or arg == '':
             print("** class name missing **")
         else:
             args = arg.split()
-            if args[0] not in class_list:
+            if args[0] not in HBNBCommand.__class_list:
                 print("** class doesn't exist **")
             elif len(args) < 2:
                 print("** instance id missing **")
@@ -142,15 +119,12 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     if len(args) < 3:
                         print("** attribute name missing **")
+                    elif len(args) < 4:
+                        print("** value missing **")
                     else:
-                        value = obj.__dict__.get(args[2], None)
-                        if value is None:
-                            print("** value missing **")
-                        else:
-                            new_value = args[3].split("\"")
-                            if len(new_value) == 3 and new_value[2] != "":
-                                obj.__dict__[args[2]] = new_value[1]
-                                obj.save()
+                        """value = obj.__dict__.get(args[2], None)"""
+                        obj.__dict__[args[2]] = args[3].lstrip('"').rstrip('"')
+                        obj.save()
 
     def do_quit(self, arg):
         """Command to quit the program"""
